@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI計算機</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-300 flex justify-center">
+    <div class="bg-white rounded-lg m-4 p-6">
+        <h1 class="font-bold text-2xl">BMI計算ツール</h1>
+
+        <div class="mb-4">
+            <label class="block text-sm text-gray-700">身長（cm）</label>
+            <input type="number" placeholder="例：170" class="w-full border border-gray-300 rounded px-3 py-2">
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-sm text-gray-700">体重（kg）</label>
+            <input type="number" placeholder="例：65" class="w-full border border-gray-300 rounded px-3 py-2">
+        </div>
+        <button id="calcBtn" class="bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition">
+            計算する
+        </button>
+    </div>
+
+    <script>
+        function calcBMI(height weight) {
+            const heightM = height / 100;
+            return weight / (heightM * heightM)
+        }
+        function getJudgement(bmi) {
+            if (bmi < 18.5) {
+                return "瘦せ型";
+            } else if (bmi < 25) {
+                return "普通";
+            } else {
+                return "肥満";
+            }
+        }
+
+
+        const button = document.querySelector("#calcBtn");
+        const result = document.querySelector(#result);
+
+        button.addEventListener("click" , () => {
+            const height = Number(documnet.querySelector("#height").value);
+            const weight = Number(document.querySelector("#weight").value);
+
+            if (height <= 0 || weight <=0) {
+                result.textContent ="身長と体重を入力してください"；
+                return;
+            }
+            
+            const bmi = calcBMI(height, weight);
+            const judgement = getJudgement (bmi);
+
+            result.textContent = "BMI: " + bmi.toFixed(1) + " (" + judgement + ")";
+        });
+    </script>
+    
+</body>
+</html>
